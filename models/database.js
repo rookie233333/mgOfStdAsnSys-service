@@ -1,6 +1,6 @@
 var mysql = require("mysql");
 /*创建连接池*/
-var connection = mysql.createPool({
+var pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '123456',

@@ -6,12 +6,12 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "depd": "^1.1.2",
     "express": "~4.16.0",
     "gulp": "^3.9.1",
     "gulp-less": "^4.0.0",
-    "http-errors": "~1.6.2",
+    "http-errors": "^1.6.2",
     "jade": "~1.11.0",
     "less": "^3.0.1",
     "morgan": "~1.9.0",
