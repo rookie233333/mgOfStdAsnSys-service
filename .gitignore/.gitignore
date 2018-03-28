@@ -1,0 +1,5 @@
+logs/*
+node_modules/
+.eslintrc.json
+.project
+.jshintrc
