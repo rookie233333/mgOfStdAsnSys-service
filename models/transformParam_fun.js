@@ -8,7 +8,7 @@ function tfmParam(obj, keyStr) {
     var keyArr = keyStr.split(','),
         tempArr;
     keyArr.forEach(function (key) {
-        tempArr.push(obj[key]||'');
+        tempArr.push(obj[key] || '');
     });
 }
 module.exports = tfmParam;
