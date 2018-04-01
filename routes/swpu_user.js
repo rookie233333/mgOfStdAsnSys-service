@@ -14,7 +14,7 @@ module.exports = {
             if (err) {
                 callback(err, result);
             } else {
-                if (password == result.password) {
+                if (password == result[0].password) {
                     callback(err, '登录成功');
                 } else {
                     callback('密码错误', '登录失败');

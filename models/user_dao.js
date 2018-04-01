@@ -20,7 +20,7 @@ module.exports = {
         });
     },
     query: function (params, callback) {
-        query('select * from user where 1=1 and id = ?', params.id, function (err, result) {
+        query('select * from user where 1=1 and name = ?', params.name, function (err, result) {
             callback(err, result);
         });
     },
