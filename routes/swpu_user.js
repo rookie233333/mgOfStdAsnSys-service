@@ -21,5 +21,8 @@ module.exports = {
                 }
             }
         });
+    },
+    query: function(params,callback){//一般查询
+        user_dao.query(params,callback);
     }
 };

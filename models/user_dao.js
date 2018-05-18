@@ -14,13 +14,21 @@ module.exports = {
         });
     },
     updata: function (params, callback) {
-        params = tfmParam(params, 'name,sex,student_id,birthday,phone,mail,avatar,level,department_id')
+        params = tfmParam(params, 'name,sex,student_id,birthday,phone,mail,avatar,level,department_id');
         query('updata user set name=?,sex=?,student_id=?,birthday=?,phone=?,mail=?,avatar=?,level=?,department_id=?', params, function (err, result) {
             callback(err, result);
         });
     },
     query: function (params, callback) {
-        query('select * from user where 1=1 and name = ?', params.name, function (err, result) {
+        var sql;
+        if(params.level != undefined){
+            sql = 'select * from user where level = '+params.level;
+        }else if(params.name != undefined){
+            sql = 'select * from user where name = '+params.name;
+        }else if(params.id != undefined){
+            sql = 'select * from user where id = '+params.id;
+        }
+        query(sql, function (err, result) {
             callback(err, result);
         });
     },
