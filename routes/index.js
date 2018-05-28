@@ -31,21 +31,22 @@ router.route('/swpu_score').get(function (req, res) {
 	handleRequest('swpu_score', req.body, res);
 });
 
-// var routerArr = [
-// 	'swpu_activity', 
-// 	'swpu_user',
-// 	'swpu_department',
-// 	'swpu_score'
-// ];
-// for (var i = 0; i < routerArr.length; i++) {
-// 	routeName = routerArr[i];
-// 	router.route(routeName).get(function (req, res) {
-// 		handleRequest(routeName, req.query, res);
-// 	}).post(function (req, res) {
-// 		handleRequest(routeName, req.body, res);
-// 	});
-// }
+//文件上传
+var app = express();
+var multer = require('multer');
+var upload = multer({ dest: 'upload/'}).single('avatar');
+app.post('/upload', upload, function (req, res, next) {
+    var file = req.file;
 
+    console.log('文件类型：%s', file.mimetype);
+    console.log('原始文件名：%s', file.originalname);
+    console.log('文件大小：%s', file.size);
+    console.log('文件保存路径：%s', file.path);
+
+    res.send({
+        ret_code: '0'
+    });
+});
 
 
 /**

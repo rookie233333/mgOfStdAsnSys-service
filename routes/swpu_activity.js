@@ -8,5 +8,13 @@ module.exports = {
     },
     queryList:function(params,callback){
         act_dao.queryList(params,callback);
+    },
+    publish:function(params,callback){
+        params.status = 1;
+        act_dao.updata(params,callback);
+    },
+    cancelPub:function(params,callback){
+        params.status = 2;
+        act_dao.updata(params,callback);
     }
 };

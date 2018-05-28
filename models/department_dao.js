@@ -9,8 +9,8 @@ module.exports = {
         });
     },
     query: function (params, callback) {
-        if (params.id == undefined) {
-            query('select * from department', function (err, result) {
+        if (params.id == undefined) {//评分倒叙
+            query('SELECT * FROM `department` ORDER BY average_score DESC', function (err, result) {
                 callback(err, result);
             });
         } else {

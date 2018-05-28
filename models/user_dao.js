@@ -21,20 +21,20 @@ module.exports = {
     },
     query: function (params, callback) {
         var sql;
-        if(params.level != undefined){
-            sql = 'select * from user where level = '+params.level;
-        }else if(params.name != undefined){
-            sql = 'select * from user where name = '+params.name;
-        }else if(params.id != undefined){
-            sql = 'select * from user where id = '+params.id;
+        if (params.level != undefined) {
+            sql = 'SELECT u.*,d.`name` department_name FROM user u JOIN department d on u.department_id = d.id WHERE u.`level` = ' + params.level;
+        } else if (params.name != undefined) {
+            sql = 'select * from user where name = "' + params.name + '"';
+        } else if (params.id != undefined) {
+            sql = 'select * from user where id = ' + params.id;
         }
         query(sql, function (err, result) {
             callback(err, result);
         });
     },
-    queryAll:function(callback){
-        query('select * from user',function(err,result){
-            callback(err,result);
+    queryAll: function (callback) {
+        query('select * from user', function (err, result) {
+            callback(err, result);
         });
     }
 };
