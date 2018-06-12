@@ -3,8 +3,8 @@ var tfmParam = require('./transformParam_fun');
 
 module.exports = {
     add: function (params, callback) {
-        params = tfmParam(params, 'name,password,sex,student_id,birthday,phone,mail,avatar,level,department_id');
-        query('insert into user(name,password,sex,student_id,birthday,phone,mail,avatar,level,department_id) values(?,?,?,?,?,?,?,?,?,?)', params, function (err, result) {
+        params = tfmParam(params, 'name,password,sex,student_id,birthday,phone,mail,avatar,level,society_id');
+        query('insert into user(name,password,sex,student_id,birthday,phone,mail,avatar,level,society_id) values(?,?,?,?,?,?,?,?,?,?)', params, function (err, result) {
             callback(err, result);
         });
     },
@@ -13,16 +13,16 @@ module.exports = {
             callback(err, result);
         });
     },
-    updata: function (params, callback) {
-        params = tfmParam(params, 'name,sex,student_id,birthday,phone,mail,avatar,level,department_id');
-        query('updata user set name=?,sex=?,student_id=?,birthday=?,phone=?,mail=?,avatar=?,level=?,department_id=?', params, function (err, result) {
+    update: function (params, callback) {
+        params = tfmParam(params, 'name,sex,student_id,birthday,phone,mail,avatar,level,society_id');
+        query('update user set name=?,sex=?,student_id=?,birthday=?,phone=?,mail=?,avatar=?,level=?,society_id=?', params, function (err, result) {
             callback(err, result);
         });
     },
     query: function (params, callback) {
         var sql;
-        if (params.level != undefined) {
-            sql = 'SELECT u.*,d.`name` department_name FROM user u JOIN department d on u.department_id = d.id WHERE u.`level` = ' + params.level;
+        if (params.society_id != undefined) {
+            sql = 'SELECT * from user WHERE society_id = ' + params.society_id;
         } else if (params.name != undefined) {
             sql = 'select * from user where name = "' + params.name + '"';
         } else if (params.id != undefined) {
@@ -34,6 +34,16 @@ module.exports = {
     },
     queryAll: function (callback) {
         query('select * from user', function (err, result) {
+            callback(err, result);
+        });
+    },
+    updatadp: function (params, callback) {
+        query('update user set society_id = ' + params.society_id + ' where id = ' + params.id, function (err, r) {
+            callback(err, r);
+        });
+    },
+    querynotid: function (params, callback) {
+        query('select * from user where society_id <> ' + params.society_id, function (err, result) {
             callback(err, result);
         });
     }

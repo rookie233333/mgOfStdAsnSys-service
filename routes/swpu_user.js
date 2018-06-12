@@ -14,7 +14,7 @@ module.exports = {
             if (err) {
                 callback(err, result);
             } else {
-                if (password == result[0].password) {
+                if (result.length !== 0 && password == result[0].password) {
                     callback(err, '登录成功');
                 } else {
                     callback('密码错误', '登录失败');
@@ -25,7 +25,13 @@ module.exports = {
     query: function (params, callback) { //一般查询
         user_dao.query(params, callback);
     },
-    delete: function (params, callback) {//删除用户
+    delete: function (params, callback) { //删除用户
         user_dao.del(params, callback);
+    },
+    updatadp: function (params, callback) {
+        user_dao.updatadp(params, callback);
+    },
+    querynotid: function (params, callback) {
+        user_dao.querynotid(params, callback);
     }
 };

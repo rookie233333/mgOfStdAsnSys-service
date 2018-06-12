@@ -31,6 +31,42 @@ router.route('/swpu_score').get(function (req, res) {
 	handleRequest('swpu_score', req.body, res);
 });
 
+router.route('/swpu_stmg').get(function (req, res) {
+	handleRequest('swpu_stmg', req.query, res);
+}).post(function (req, res) {
+	handleRequest('swpu_stmg', req.body, res);
+});
+
+router.route('/swpu_stlmg').get(function (req, res) {
+	handleRequest('swpu_stlmg', req.query, res);
+}).post(function (req, res) {
+	handleRequest('swpu_stlmg', req.body, res);
+});
+
+router.route('/swpu_society').get(function (req, res) {
+	handleRequest('swpu_society', req.query, res);
+}).post(function (req, res) {
+	handleRequest('swpu_society', req.body, res);
+});
+
+router.route('/swpu_act').get(function (req, res) {
+	handleRequest('swpu_act', req.query, res);
+}).post(function (req, res) {
+	handleRequest('swpu_act', req.body, res);
+});
+
+router.route('/swpu_appli').get(function (req, res) {
+	handleRequest('swpu_appli', req.query, res);
+}).post(function (req, res) {
+	handleRequest('swpu_appli', req.body, res);
+});
+
+router.route('/swpu_finappli').get(function (req, res) {
+	handleRequest('swpu_finappli', req.query, res);
+}).post(function (req, res) {
+	handleRequest('swpu_finappli', req.body, res);
+});
+
 //文件上传
 var app = express();
 var multer = require('multer');

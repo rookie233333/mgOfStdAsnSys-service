@@ -4,7 +4,8 @@ var pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '123456',
-    database: 'management of student associations system'
+    database: 'management of student associations system',
+    multipleStatements: true//执行多条语句
 });
 
 var query=function(sql,options,callback){  
